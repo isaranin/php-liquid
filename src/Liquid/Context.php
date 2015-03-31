@@ -194,7 +194,8 @@ class Context
 			return $matches[1];
 		}
 
-		if (preg_match('/^\((\S+)..(\S+)\)$/', $key, $matches)) {
+		if (preg_match('/^\((\S+)\.\.(\S+)\)$/', $key, $matches)) {
+			var_dump($key);
 			$min = is_numeric($matches[1])?$matches[1]:$this->variable($matches[1]);
 			$max = is_numeric($matches[2])?$matches[2]:$this->variable($matches[2]);
 			return range($min, $max);
