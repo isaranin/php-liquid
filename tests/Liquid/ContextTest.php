@@ -86,6 +86,7 @@ class ContextTest extends TestCase
 			'false' => false,
 			"'quoted_string'" => 'quoted_string',
 			'"double_quoted_string"' => "double_quoted_string",
+			'(1..2)' => [1,2]
 		);
 
 		foreach ($data as $key => $expected) {
