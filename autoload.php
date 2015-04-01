@@ -26,7 +26,25 @@ class LiquidAutoLoader {
 
         }
      }
+}
+
+class InsalesAutoLoader {
+
+    public static function loadClass($className) {
+        $parts = explode('\\', ltrim($className,"\\"));
+        if($parts[0]==="Insales"){
+
+            $full = __DIR__ . "/src/" . implode("/", $parts) . ".php";
+
+
+            if(file_exists($full)){
+                require_once $full;
+            }
+
+        }
+     }
 
 }
 
 spl_autoload_register(array('LiquidAutoLoader', 'loadClass'));
+spl_autoload_register(array('InsalesAutoLoader', 'loadClass'));
