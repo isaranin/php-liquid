@@ -42,9 +42,9 @@ class ExtFilters
 		}
 		foreach ($input['parts'] as $part) {
 			if ($part['is_link']) {
-				$html .= '<span class="page">'.self::link_to($part['title'], $part['url']).'</span>';
+				$html .= '<span class="page pagination_page ">'.self::link_to($part['title'], $part['url']).'</span>';
 			} else if (strtolower ($part['title']) === strtolower ($input['current_page'])) {
-				$html .= '<span class="page current">'.$part['title'].'</span>';
+				$html .= '<span class="page pagination_page current">'.$part['title'].'</span>';
 			} else {
 				$html .= '<span class="decot">'.$part['title'].'</span>';
 			}
