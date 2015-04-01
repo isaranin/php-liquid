@@ -56,6 +56,12 @@ HERE;
 		$this->assertTemplateResult('abc', '{%for item in array%}{{item}}{%endfor%}', array('array' => array('a', '', 'b', '', 'c')));
 	}
 
+	public function testForWithArray() {
+		$this->assertTemplateResult(' 1  2 ', '{%for item in (1..2)%} {{item}} {%endfor%}');
+		$this->assertTemplateResult(' 1  2  3 ', '{%for item in (1..a2)%} {{item}} {%endfor%}', array('a2' => 3));
+		$this->assertTemplateResult(' 2  3  4 ', '{%for item in (a1..a2)%} {{item}} {%endfor%}', array('a1' => 2, 'a2' => 4));
+	}
+
 	public function testForHelpers() {
 		$assigns = array('array' => array(1, 2, 3));
 
