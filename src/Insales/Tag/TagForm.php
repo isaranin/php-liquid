@@ -9,7 +9,7 @@
  * @package Liquid
  */
 
-namespace Liquid\Tag;
+namespace Insales\Tag;
 
 use Liquid\AbstractBlock;
 use Liquid\LiquidException;
@@ -23,7 +23,7 @@ use Liquid\Regexp;
  *
  *     {% block foo %} bar {% endblock %}
  */
-class TagPaginate extends AbstractBlock
+class TagForm extends AbstractBlock
 {
 	/**
 	 * The variable to assign to

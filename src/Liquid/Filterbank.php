@@ -47,7 +47,6 @@ class Filterbank
 		$this->context = $context;
 
 		$this->addFilter('\Liquid\StandardFilters');
-		$this->addFilter('\Liquid\ExtFilters');
 	}
 
 	/**

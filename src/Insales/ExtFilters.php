@@ -9,7 +9,7 @@
  * @package Liquid
  */
 
-namespace Liquid;
+namespace Insales;
 
 /**
  * A selection of extended filters.
@@ -58,7 +58,7 @@ class ExtFilters
 
 	/**
 	 * Return json
-	 * 
+	 *
 	 * @param mixed $input
 	 * @return string
 	 */
