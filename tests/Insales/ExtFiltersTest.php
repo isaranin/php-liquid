@@ -92,4 +92,19 @@ class ExtFiltersTest extends \Liquid\TestCase
 			$this->assertEquals($expected, ExtFilters::json($element));
 		}
     }
+
+	/**
+	 * @covers \Insales\ExtFilters::select_option
+	 */
+	public function testSelect_option() {
+		$data = [
+			'<option  value=""></option>' => [''],
+			'<option  value="value">title</option>' => ['value', false, 'title'],
+			'<option selected value="value2">title2</option>' => ['value2', true, 'title2'],
+		];
+
+		foreach ($data as $expected => $element) {
+			$this->assertEquals($expected, call_user_func_array(__NAMESPACE__ .'\ExtFilters::select_option', $element));
+		}
+	}
 }

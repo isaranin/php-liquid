@@ -65,4 +65,22 @@ class ExtFilters
 	public static function json($input) {
 		return json_encode($input);
 	}
+
+	/**
+	 * Return <option> tag
+	 *
+	 * @param string $value value attribute
+	 * @param boolean $selected [optional] is selected or not
+	 * @param string $title [optional] string to inner
+	 * @return string
+	 */
+	public static function select_option($value, $selected = false, $title = '') {
+
+		return
+			sprintf('<option %s value="%s">%s</option>',
+					(($selected)?'selected':''),
+					$value,
+					$title
+				);
+	}
 }
