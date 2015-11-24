@@ -404,6 +404,9 @@ class StandardFilters
 	 * @return array
 	 */
 	public static function split($input, $pattern) {
+		if (empty($pattern)) {
+			return str_split($input);
+		}
 		return explode($pattern, $input);
 	}
 
