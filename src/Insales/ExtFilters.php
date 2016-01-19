@@ -83,4 +83,49 @@ class ExtFilters
 					$title
 				);
 	}
+	
+	/**
+	 * Return url to shopify asset
+	 * 
+	 * @param string $value
+	 * @return string
+	 */
+	public static function shopify_asset_url($value) {
+		return $value;
+	}
+	
+	/**
+	 * Return <script> wrap for string
+	 * 
+	 * @param string $src source url for script
+	 * @return string
+	 */
+	public static function script_tag($src) {
+		return sprintf('<script src="%s"></script>', $src);
+	}
+	
+	/**
+	 * Return language string from lang file, lang file shoud be added at
+	 * \Liquid\Liquid::$config LANG_FILE key
+	 * 
+	 * @param string $fullname full name of string
+	 * @return sting
+	 */
+	public static function t($fullname) {
+		$lang = \Liquid\Liquid::get('LANG_FILE');
+		if (is_null($lang)) {
+			return '';
+		}
+		
+		$res = $lang;
+		foreach(explode('.', $fullname) as $name) {
+			if (isset($res[$name])) {
+				$res = $res[$name];
+			} else {
+				$res = null;
+			}
+		}
+		return is_string($res)?$res:'Not found - '.$fullname;
+		
+	}
 }

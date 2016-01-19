@@ -22,6 +22,7 @@ class ExtFiltersTest extends \Liquid\TestCase
 		$this->context = new \Liquid\Context();
 
 		$this->context->addFilters('\Insales\ExtFilters');
+		
     }
 
     /**
@@ -105,6 +106,54 @@ class ExtFiltersTest extends \Liquid\TestCase
 
 		foreach ($data as $expected => $element) {
 			$this->assertEquals($expected, call_user_func_array(__NAMESPACE__ .'\ExtFilters::select_option', $element));
+		}
+	}
+	
+	/**
+	 * @covers \Insales\ExtFilters::shopify_asset_url
+	 */
+	public function testShopify_asset_url() {
+		$data = [
+			'test' => 'test',
+		];
+
+		foreach ($data as $expected => $element) {
+			$this->assertEquals($expected, ExtFilters::shopify_asset_url($element));
+		}
+	}
+	
+	/**
+	 * @covers \Insales\ExtFilters::script_tag
+	 */
+	public function testScript_tag() {
+		$data = [
+			'<script src="arg"></script>' => 'arg',
+		];
+
+		foreach ($data as $expected => $element) {
+			$this->assertEquals($expected, ExtFilters::script_tag($element));
+		}
+	}
+	
+	/**
+	 * @covers \Insales\ExtFilters::t
+	 */
+	public function testT() {
+		$lang = [
+			'general' => [
+				'my' => 'text'
+			]
+		];
+		\Liquid\Liquid::set('LANG_FILE', $lang);
+		
+		$data = [
+			'text' => 'general.my',
+			'Not found - general' => 'general',
+			'Not found - qwerty' => 'qwerty'
+		];
+
+		foreach ($data as $expected => $element) {
+			$this->assertEquals($expected, ExtFilters::t($element));
 		}
 	}
 }
